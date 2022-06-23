@@ -1,7 +1,6 @@
 package com.example.modelagemdados.entity;
 
 import com.example.modelagemdados.enums.TipoSituacaoParametroEntity;
-import java.time.Instant;
 import java.time.LocalDateTime;
 import javax.persistence.Column;
 import javax.persistence.Convert;

@@ -1,13 +1,9 @@
 package com.example.modelagemdados.entity;
 
-import com.example.modelagemdados.enums.TipoSituacaoModeloEntity;
 import com.example.modelagemdados.enums.TipoSituacaoMotorEntity;
-import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Convert;

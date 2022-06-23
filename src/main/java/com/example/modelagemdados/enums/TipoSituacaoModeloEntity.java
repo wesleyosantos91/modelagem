@@ -2,9 +2,6 @@ package com.example.modelagemdados.enums;
 
 import static java.text.MessageFormat.format;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Arrays;
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;

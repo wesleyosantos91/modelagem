@@ -2,8 +2,8 @@ package com.example.modelagemdados.entity;
 
 import com.example.modelagemdados.enums.TipoSituacaoModeloEntity;
 import java.time.LocalDateTime;
-import java.util.LinkedHashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Convert;
@@ -57,10 +57,10 @@ public class ModeloEntity {
     private TipoSituacaoModeloEntity situacao;
 
     @OneToMany(mappedBy = "modelo")
-    private Set<ParametroEntity> parametros = new LinkedHashSet<>();
+    private List<ParametroEntity> parametros = new ArrayList<>();
 
     @OneToMany(mappedBy = "modelo")
-    private Set<MotorCanalModeloEntity> motores = new LinkedHashSet<>();
+    private List<MotorCanalModeloEntity> motores = new ArrayList<>();
 
     @PrePersist
     public void onCreate() {
