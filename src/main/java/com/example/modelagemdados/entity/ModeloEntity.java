@@ -1,14 +1,10 @@
 package com.example.modelagemdados.entity;
 
 import com.example.modelagemdados.enums.TipoSituacaoModeloEntity;
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedHashSet;
+import java.util.Set;
 import java.util.UUID;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Convert;
 import javax.persistence.Entity;
@@ -17,19 +13,23 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
-import javax.validation.constraints.NotEmpty;
+import javax.persistence.Table;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.validator.constraints.Length;
 
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@ToString(onlyExplicitlyIncluded = true)
 @Entity(name = "tbgq8007_mode_noti_clie_segu")
+@Table(name = "tbgq8007_mode_noti_clie_segu")
 public class ModeloEntity {
 
     @Id
@@ -37,36 +37,30 @@ public class ModeloEntity {
     @GenericGenerator(
             name = "UUID",
             strategy = "org.hibernate.id.UUIDGenerator")
-    @Column(name = "cod_idt_mode_noti_clie_segu", updatable = false, nullable = false, columnDefinition = "BINARY(16)")
+    @Column(name = "cod_idt_mode_noti_clie_segu", nullable = false, length = 16, columnDefinition = "binary(16)")
     private UUID codigoIdentificador;
 
-    @NotEmpty
-    @Length(min = 3, max = 100)
-    @Column(name = "nom_mode_noti_clie_segu ", length = 100, nullable = false)
+    @Column(name = "nom_mode_noti_clie_segu", nullable = false, length = 100)
     private String nome;
 
-    @NotEmpty
-    @Length(min = 3, max = 100)
-    @Column(name = "des_mode_noti_clie_segu ", length = 100, nullable = false)
+    @Column(name = "des_mode_noti_clie_segu", length = 100)
     private String descricao;
-
-    @Convert(converter = TipoSituacaoModeloEntity.Mapeador.class)
-    @Column(name = "ind_mode_noti_clie_segu_ativ", nullable = false, columnDefinition = "CHAR(1)")
-    private TipoSituacaoModeloEntity situacao;
-
-    @JsonManagedReference
-    @OneToMany(mappedBy = "modelo", cascade = CascadeType.PERSIST)
-    private List<ParametroEntity> parametros = new ArrayList<>();
-
-
-    @OneToMany(mappedBy = "motor", cascade = CascadeType.PERSIST)
-    private List<MotorCanalModeloEntity> motores = new ArrayList<>();
 
     @Column(name = "dat_hor_cria_rgto", nullable = false)
     private LocalDateTime dataInclusao;
 
     @Column(name = "dat_hor_alte_rgto")
     private LocalDateTime dataAtualizacao;
+
+    @Convert(converter = TipoSituacaoModeloEntity.Mapeador.class)
+    @Column(name = "ind_mode_noti_clie_segu_ativ", nullable = false, columnDefinition = "char(1)")
+    private TipoSituacaoModeloEntity situacao;
+
+    @OneToMany(mappedBy = "modelo")
+    private Set<ParametroEntity> parametros = new LinkedHashSet<>();
+
+    @OneToMany(mappedBy = "modelo")
+    private Set<MotorCanalModeloEntity> motores = new LinkedHashSet<>();
 
     @PrePersist
     public void onCreate() {
@@ -77,4 +71,5 @@ public class ModeloEntity {
     protected void onUpdate() {
         this.dataAtualizacao = LocalDateTime.now();
     }
+
 }
