@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Convert;
 import javax.persistence.Entity;
@@ -56,10 +57,10 @@ public class ModeloEntity {
     @Column(name = "ind_mode_noti_clie_segu_ativ", nullable = false, columnDefinition = "char(1)")
     private TipoSituacaoModeloEntity situacao;
 
-    @OneToMany(mappedBy = "modelo")
+    @OneToMany(mappedBy = "modelo", cascade = CascadeType.PERSIST)
     private List<ParametroEntity> parametros = new ArrayList<>();
 
-    @OneToMany(mappedBy = "modelo")
+    @OneToMany(mappedBy = "modelo", cascade = CascadeType.PERSIST)
     private List<MotorCanalModeloEntity> motores = new ArrayList<>();
 
     @PrePersist

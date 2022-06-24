@@ -23,17 +23,18 @@ public class ModeloController {
     @Transactional
     @PostMapping
     public ModeloEntity save(@RequestBody ModeloEntity entity) {
-//        entity.getParametros().forEach(p -> {
-//            p.setModelo(entity);
-//        });
-//        entity.getMotores().forEach(m-> {
-//            m.setModelo(entity);
-//            m.setMotor(motorRepository.findById(m.getMotor().getCodigoIdentificador()).get());
-//        });
+        entity.getParametros().forEach(p -> {
+            p.setModelo(entity);
+        });
+        entity.getMotores().forEach(m-> {
+            m.setModelo(entity);
+            m.getCodigoIdentificador().setCodigoIdentificadorCanal(1);
+            m.setMotor(motorRepository.findById(m.getMotor().getCodigoIdentificador()).get());
+        });
         ModeloEntity save = repository.save(entity);
 
         System.out.println(save);
 
-        return save;
+        return null;
     }
 }

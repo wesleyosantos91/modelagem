@@ -28,6 +28,6 @@ public class ParametroEntityId implements Serializable {
 
     @EqualsAndHashCode.Include
     @Column(name = "nom_parm_noti_clie_segu", nullable = false, length = 50)
-    private String nomeParamtro;
+    private String nomeParametro;
 
 }
