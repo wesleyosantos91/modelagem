@@ -35,8 +35,8 @@ public class NotificacaoEntity {
     @GenericGenerator(
             name = "UUID",
             strategy = "org.hibernate.id.UUIDGenerator")
-    @Column(name = "cod_idt_noti_segu", nullable = false, length = 16, columnDefinition = "binary(16)")
-    private UUID codigoIdentificador;
+    @Column(name = "cod_idt_noti_segu", nullable = false, length = 32, columnDefinition = "varchar(32)")
+    private String codigoIdentificador;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "cod_tipo_noti_clie_segu", columnDefinition = "smallint")

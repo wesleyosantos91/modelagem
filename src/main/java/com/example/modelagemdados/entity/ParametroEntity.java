@@ -31,7 +31,7 @@ import lombok.ToString;
 public class ParametroEntity {
 
     @EmbeddedId
-    private ParametroEntityId id;
+    private ParametroEntityId id = new ParametroEntityId();
 
     @MapsId("codigoIdentificadorModelo")
     @ManyToOne(fetch = FetchType.LAZY, optional = false)

@@ -27,11 +27,11 @@ public class MotorCanalModeloId implements Serializable {
     private Integer codigoIdentificadorCanal;
 
     @EqualsAndHashCode.Include
-    @Column(name = "cod_idt_moto_noti_clie_segu", nullable = false, length = 16)
-    private UUID codigoIdentificadorMotor;
+    @Column(name = "cod_idt_moto_noti_clie_segu", nullable = false, length = 32)
+    private String codigoIdentificadorMotor;
 
     @EqualsAndHashCode.Include
-    @Column(name = "cod_idt_mode_noti_clie_segu", nullable = false, length = 16)
-    private UUID codigoIdentificadorModelo;
+    @Column(name = "cod_idt_mode_noti_clie_segu", nullable = false, length = 32)
+    private String codigoIdentificadorModelo;
 
 }

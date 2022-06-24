@@ -23,11 +23,11 @@ import lombok.ToString;
 public class ParametroEntityId implements Serializable {
 
     @EqualsAndHashCode.Include
-    @Column(name = "cod_idt_mode_noti_clie_segu", nullable = false, length = 16)
-    private UUID codigoIdentificadorModelo;
+    @Column(name = "cod_idt_mode_noti_clie_segu", nullable = false, length = 32)
+    private String codigoIdentificadorModelo;
 
     @EqualsAndHashCode.Include
     @Column(name = "nom_parm_noti_clie_segu", nullable = false, length = 50)
-    private String nomeParamtro;
+    private String nomeParametro;
 
 }

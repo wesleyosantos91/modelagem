@@ -23,11 +23,11 @@ import lombok.ToString;
 public class NotificacaoClienteId implements Serializable {
 
     @EqualsAndHashCode.Include
-    @Column(name = "cod_idt_noti_segu", nullable = false, length = 16)
-    private UUID codigoIdentificadorNoticacaoSeguro;
+    @Column(name = "cod_idt_noti_segu", nullable = false, length = 32)
+    private String codigoIdentificadorNoticacaoSeguro;
 
     @EqualsAndHashCode.Include
-    @Column(name = "cod_idef_pess_clie", nullable = false, length = 16)
-    private UUID codigoIdentificadorPessoaCliente;
+    @Column(name = "cod_idef_pess_clie", nullable = false, length = 32)
+    private String codigoIdentificadorPessoaCliente;
 
 }

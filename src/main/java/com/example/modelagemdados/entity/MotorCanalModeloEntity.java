@@ -34,7 +34,7 @@ import lombok.ToString;
 public class MotorCanalModeloEntity {
 
     @EmbeddedId
-    private MotorCanalModeloId codigoIdentificador;
+    private MotorCanalModeloId id = new MotorCanalModeloId();
 
     @MapsId("codigoIdentificadorMotor")
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
@@ -62,6 +62,7 @@ public class MotorCanalModeloEntity {
     @PrePersist
     public void onCreate() {
         this.dataInclusao = LocalDateTime.now();
+        this.situacao = TipoSituacaoMotorCanalModeloModeloEntity.ATIVO;
     }
 
     @PreUpdate

@@ -34,13 +34,13 @@ public class SolicitacaoNotificacaoClienteEntity {
     @GenericGenerator(
             name = "UUID",
             strategy = "org.hibernate.id.UUIDGenerator")
-    @Column(name = "cod_idt_soli_noti_clie_segu", nullable = false, length = 16)
-    private UUID codigoIdentificador;
+    @Column(name = "cod_idt_soli_noti_clie_segu", nullable = false, length = 32, columnDefinition = "varchar(32)")
+    private String codigoIdentificador;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumns({
-            @JoinColumn(name = "cod_idt_noti_segu", referencedColumnName = "cod_idt_noti_segu", nullable = false, columnDefinition = "binary(16)"),
-            @JoinColumn(name = "cod_idef_pess_clie", referencedColumnName = "cod_idef_pess_clie", nullable = false, columnDefinition = "binary(16)")
+            @JoinColumn(name = "cod_idt_noti_segu", referencedColumnName = "cod_idt_noti_segu", nullable = false, columnDefinition = "varchar(32)"),
+            @JoinColumn(name = "cod_idef_pess_clie", referencedColumnName = "cod_idef_pess_clie", nullable = false, columnDefinition = "varchar(32)")
     })
     private NotificacaoClienteEntity notificacaoCliente;
 
@@ -59,7 +59,7 @@ public class SolicitacaoNotificacaoClienteEntity {
     @Column(name = "dat_hor_soli_noti_clie_segu", nullable = false)
     private LocalDateTime datHorSoliNotiClieSegu;
 
-    @Column(name = "cod_idef_reto_envo_noti_clie", length = 16, columnDefinition = "binary(16)")
+    @Column(name = "cod_idef_reto_envo_noti_clie", length = 32, columnDefinition = "varchar(32)")
     private UUID codIdefRetoEnvoNotiClie;
 
     @Column(name = "dat_hor_reto_envo_noti_clie")

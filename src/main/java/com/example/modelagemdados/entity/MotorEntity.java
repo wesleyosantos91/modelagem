@@ -37,8 +37,8 @@ public class MotorEntity {
     @GenericGenerator(
             name = "UUID",
             strategy = "org.hibernate.id.UUIDGenerator")
-    @Column(name = "cod_idt_moto_noti_clie_segu", nullable = false, length = 16, columnDefinition = "binary(16)")
-    private UUID codigoIdentificador;
+    @Column(name = "cod_idt_moto_noti_clie_segu", nullable = false, length = 32, columnDefinition = "varchar(32)")
+    private String codigoIdentificador;
 
     @Column(name = "nom_moto_noti_clie_segu", nullable = false, length = 100)
     private String nome;
